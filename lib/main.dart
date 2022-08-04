@@ -31,26 +31,28 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("animation 101"),
-      ),
-      body: GestureDetector(
-        onTap: () {
-          setState(() {
-            selected = !selected;
-          });
-        },
-        child: Center(
-          child: AnimatedContainer(
-            width: selected ? 200.0 : 100,
-            height: selected ? 200 : 100,
-            alignment: Alignment.center,
-            duration: const Duration(milliseconds: 500),
-            color: Colors.amber,
-            curve: Curves.elasticOut,
-          ),
+        appBar: AppBar(
+          title: Text("animation 101"),
         ),
-      ),
-    );
+        body: TweenAnimationBuilder(
+          duration: Duration(seconds: 4),
+          tween: EdgeInsetsTween(
+              begin: EdgeInsets.all(100), end: EdgeInsets.all(200)),
+          builder: (BuildContext context, EdgeInsets? value, Widget? child) {
+            return Center(
+              child: Column(
+                children: [
+                  Container(
+                    height: 100,
+                  ),
+                  Container(
+                    padding: value!,
+                    color: Colors.white,
+                  ),
+                ],
+              ),
+            );
+          },
+        ));
   }
 }
