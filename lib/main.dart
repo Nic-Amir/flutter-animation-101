@@ -43,10 +43,11 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Center(
           child: AnimatedContainer(
             width: selected ? 200.0 : 100,
-            height: selected ? 100 : 200,
+            height: selected ? 200 : 100,
             alignment: Alignment.center,
-            duration: const Duration(seconds: 1),
+            duration: const Duration(milliseconds: 500),
             color: Colors.amber,
+            curve: Curves.elasticOut,
           ),
         ),
       ),
