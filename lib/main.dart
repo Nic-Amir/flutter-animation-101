@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'animation_controller.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -13,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData.dark(),
-      home: MyHomePage(),
+      home: SimpleScaleAnimation(),
     );
   }
 }
@@ -31,28 +33,9 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("animation 101"),
-        ),
-        body: TweenAnimationBuilder(
-          duration: Duration(seconds: 4),
-          tween: EdgeInsetsTween(
-              begin: EdgeInsets.all(100), end: EdgeInsets.all(200)),
-          builder: (BuildContext context, EdgeInsets? value, Widget? child) {
-            return Center(
-              child: Column(
-                children: [
-                  Container(
-                    height: 100,
-                  ),
-                  Container(
-                    padding: value!,
-                    color: Colors.white,
-                  ),
-                ],
-              ),
-            );
-          },
-        ));
+      appBar: AppBar(
+        title: Text("animation 101"),
+      ),
+    );
   }
 }
